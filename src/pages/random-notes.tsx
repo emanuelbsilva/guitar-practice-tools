@@ -7,7 +7,7 @@ import { Note } from '../types/Note';
 import StreamWrapper from '../ui/components/StreamWrapper';
 import { getRandomNote } from '../utils/getRandomNote';
 
-const ChordTonesMain = () => {
+const RandomNotesPage = () => {
   const [currentNote, setCurrentNote] = useState<Note>(getRandomNote([]));
 
   return (
@@ -21,4 +21,4 @@ const ChordTonesMain = () => {
   );
 };
 
-export default ChordTonesMain;
+export default RandomNotesPage;
