@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { RandomNotes } from '../features/random-notes/RandomNotes';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
+import { Note } from '../types/Note';
+import StreamWrapper from '../ui/components/StreamWrapper';
+import { getRandomNote } from '../utils/getRandomNote';
 
-const RandomNotesPage = () => (
-  <Main meta={<Meta title="Random Notes" description="Random Note" />}>
-    <p>Incoming</p>
-  </Main>
-);
+const ChordTonesMain = () => {
+  const [currentNote, setCurrentNote] = useState<Note>(getRandomNote([]));
 
-export default RandomNotesPage;
+  return (
+    <Main meta={<Meta title="Chord Tones" description="Practice Chord Tones" />}>
+      <StreamWrapper
+        content={(stream) => (
+          <RandomNotes stream={stream} currentNote={currentNote} setCurrentNote={setCurrentNote} />
+        )}
+      />
+    </Main>
+  );
+};
+
+export default ChordTonesMain;
